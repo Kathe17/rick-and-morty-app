@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import Filters from '../components/organisms/Filters';
+import Filters from '../components/organisms/Filters/Filters';
 
 describe('Filters', () => {
     it('renders all filter sections and allows changing filters', () => {
@@ -25,6 +25,8 @@ describe('Filters', () => {
                 handleFilterClick={handleFilterClick}
                 sortOrder="asc"
                 setSortOrder={setSortOrder}
+                statusQuery="dead"
+                genderQuery="female"
             />
         );
 

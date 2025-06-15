@@ -1,18 +1,7 @@
 import React from "react";
-import Typography from "../atoms/Typography";
-import Button from "../atoms/Button";
-
-type Option = {
-    label: string;
-    value: string;
-};
-
-interface FilterSectionProps {
-    title?: string;
-    filters: Option[];
-    selected: string;
-    onChange: (value: string) => void;
-}
+import type { FilterSectionProps } from "./models/filterSection.model";
+import Typography from "../../atoms/Typography/Typography";
+import Button from "../../atoms/Button/Button";
 
 const FilterSection: React.FC<FilterSectionProps> = ({ title, filters, selected, onChange }: FilterSectionProps) => {
     return (

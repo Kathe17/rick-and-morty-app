@@ -1,20 +1,6 @@
 import React, { type JSX } from "react";
 import clsx from "clsx";
-
-type Variant = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span" | "label";
-type Size = "xs" | "sm" | "base" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl" | "7xl" | "8xl" | "9xl";
-type Weight = "light" | "normal" | "medium" | "semibold" | "bold";
-type Style = "normal" | "italic";
-
-export interface TypographyProps {
-  variant?: Variant;
-  size?: Size;
-  weight?: Weight;
-  style?: Style;
-  color?: string; // Tailwind class or hex
-  className?: string;
-  children: React.ReactNode;
-}
+import type { Size, Style, TypographyProps, Variant, Weight } from "./models/typography.model";
 
 const sizeMap: Record<Size, string> = {
   xs: "!text-xs !leading-4",

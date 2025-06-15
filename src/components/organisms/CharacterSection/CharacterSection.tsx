@@ -1,18 +1,8 @@
 import React from "react";
-import Typography from "../atoms/Typography";
-import CharacterCard from "../molecules/CharacterCard";
-
-interface CharacterSectionProps {
-    title: string;
-    characters: any[];
-    selectedId?: string | null;
-    setSelectedId: (id: string) => void;
-    favorites: string[];
-    toggleFavorite: (id: string) => void;
-    softDelete?: (id: string) => void;
-    isDeleted?: boolean;
-    restore?: (id: string) => void;
-}
+import Typography from "../../atoms/Typography/Typography";
+import CharacterCard from "../../molecules/CharacterCard/CharacterCard";
+import type { CharacterSectionProps } from "./models/characterSection.model";
+import type { Character } from "../../../models/character.model";
 
 const CharacterSection: React.FC<CharacterSectionProps> = ({
     title,
@@ -32,7 +22,7 @@ const CharacterSection: React.FC<CharacterSectionProps> = ({
             </Typography>
         </div>
         <ul className="flex flex-col gap-1">
-            {characters.map((char: any) => (
+            {characters.map((char: Character) => (
                 <React.Fragment key={char.id}>
                     <CharacterCard
                         char={char}

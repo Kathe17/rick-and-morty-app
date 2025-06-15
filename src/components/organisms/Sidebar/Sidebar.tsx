@@ -1,44 +1,12 @@
 import React from "react";
 import { HiOutlineSearch, HiOutlineAdjustments } from "react-icons/hi";
-import Typography from "../atoms/Typography";
-import Button from "../atoms/Button";
-import Poppup from "../atoms/Poppup";
-import BottomSheet from "../atoms/BottomSheet";
-import Filters from "./Filters";
-import CharacterSection from "./CharacterSection";
-
-interface SidebarProps {
-    name: string;
-    setName: (val: string) => void;
-    filterOpen: boolean;
-    toggleFilterOpen: () => void;
-    filterRef?: React.RefObject<HTMLDivElement | null>;
-    characterFilter: string;
-    setCharacterFilter: (val: string) => void;
-    specieFilter: string;
-    setSpecieFilter: (val: string) => void;
-    statusFilter: string;
-    setStatusFilter: (val: string) => void;
-    genderFilter: string;
-    setGenderFilter: (val: string) => void;
-    characterQuery: string;
-    specieQuery: string;
-    handleFilterClick: () => void;
-    favoriteCharacters: any[];
-    nonFavoriteCharacters: any[];
-    deletedCharacters: any[];
-    favorites: string[];
-    selectedId?: string | null;
-    setSelectedId: (id: string) => void;
-    toggleFavorite: (id: string) => void;
-    error?: { message: string };
-    loading?: boolean;
-    buttonRef: React.RefObject<HTMLButtonElement | null>;
-    softDelete?: (id: string) => void;
-    restore?: (id: string) => void;
-    sortOrder: string;
-    setSortOrder: (value: string) => void;
-}
+import Typography from "../../atoms/Typography/Typography";
+import Button from "../../atoms/Button/Button";
+import Poppup from "../../atoms/Poppup/Poppup";
+import BottomSheet from "../../atoms/BottomSheet/BottomSheet";
+import Filters from "../Filters/Filters";
+import CharacterSection from "../CharacterSection/CharacterSection";
+import type { SidebarProps } from "./models/sidebar.model";
 
 const Sidebar: React.FC<SidebarProps> = ({
     name,
@@ -70,7 +38,9 @@ const Sidebar: React.FC<SidebarProps> = ({
     softDelete,
     restore,
     sortOrder,
-    setSortOrder
+    setSortOrder,
+    statusQuery,
+    genderQuery,
 }) => (
     <aside className="flex flex-col items-center w-full md:w-1/3 lg:w-1/4 h-full flex-shrink-0 bg-cool-white-100 pt-8.5 px-4 gap-y-4 border-r border-gray-100">
         <div className="w-full flex px-2 p-2">
@@ -109,6 +79,8 @@ const Sidebar: React.FC<SidebarProps> = ({
                     handleFilterClick={handleFilterClick}
                     sortOrder={sortOrder}
                     setSortOrder={setSortOrder}
+                    statusQuery={statusQuery}
+                    genderQuery={genderQuery}
                 />
             </Poppup>
         </div>
@@ -128,6 +100,8 @@ const Sidebar: React.FC<SidebarProps> = ({
                 handleFilterClick={handleFilterClick}
                 sortOrder={sortOrder}
                 setSortOrder={setSortOrder}
+                statusQuery={statusQuery}
+                genderQuery={genderQuery}
             />
         </BottomSheet>
         <div className="flex flex-col w-full overflow-scroll">

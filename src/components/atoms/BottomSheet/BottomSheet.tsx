@@ -1,12 +1,6 @@
 import React, { useEffect } from "react";
 import { IoArrowBackOutline } from "react-icons/io5";
-
-interface BottomSheetProps {
-    open: boolean;
-    onClose: () => void;
-    children: React.ReactNode;
-    title?: string;
-}
+import type { BottomSheetProps } from "./models/bottomSheet.model";
 
 const BottomSheet: React.FC<BottomSheetProps> = ({ open, onClose, children, title }) => {
     useEffect(() => {

@@ -7,8 +7,9 @@ import { useFavorites } from '../hooks/useFavorites';
 import { useSidebar } from '../hooks/useSidebar';
 import { useCharacterFilters } from '../hooks/useCharacterFilters';
 import { useCharacterSearch } from '../hooks/useCharacterSearch';
-import Sidebar from '../components/organisms/Sidebar';
-import CharacterInfo from '../components/organisms/CharacterInfo';
+import Sidebar from '../components/organisms/Sidebar/Sidebar';
+import CharacterInfo from '../components/organisms/CharacterInfo/CharacterInfo';
+import type { Character } from '../models/character.model';
 
 const CharacterList: React.FC = () => {
     // Sidebar & search hooks
@@ -47,18 +48,18 @@ const CharacterList: React.FC = () => {
     });
 
     // Personajes filtrados
-    const allCharacters = data?.characters?.results ? data.characters.results : [];
+    const allCharacters: Character[] = data?.characters?.results ? data.characters.results : [];
     // Para mostrar todos, incluidos eliminados, para restaurar
     const favoriteCharacters = sortByName(
-        allCharacters.filter((char: any) => favorites.includes(char.id) && !deleted.includes(char.id)),
+        allCharacters.filter((char: Character) => favorites.includes(char.id) && !deleted.includes(char.id)),
         sortOrder
     );
     const nonFavoriteCharacters = sortByName(
-        allCharacters.filter((char: any) => !favorites.includes(char.id) && !deleted.includes(char.id)),
+        allCharacters.filter((char: Character) => !favorites.includes(char.id) && !deleted.includes(char.id)),
         sortOrder
     );
     const deletedCharacters = sortByName(
-        allCharacters.filter((char: any) => deleted.includes(char.id)),
+        allCharacters.filter((char: Character) => deleted.includes(char.id)),
         sortOrder
     );
 
@@ -68,8 +69,8 @@ const CharacterList: React.FC = () => {
         toggleFilterOpen();
     };
 
-    const char: any = [...favoriteCharacters, ...nonFavoriteCharacters].find(
-        (c: any) => c.id === selectedId
+    const char: Character | undefined = [...favoriteCharacters, ...nonFavoriteCharacters].find(
+        (c: Character) => c.id === selectedId
     );
 
     const isFavorite = favorites.includes(selectedId || '');
@@ -108,6 +109,8 @@ const CharacterList: React.FC = () => {
                 restore={restore}
                 sortOrder={sortOrder}
                 setSortOrder={setSortOrder}
+                statusQuery={statusQuery}
+                genderQuery={genderQuery}
             />
             {/* Main content */}
             <main className="flex-1 flex flex-col bg-white min-h-screen min-w-0 pt-10 px-24 overflow-auto">

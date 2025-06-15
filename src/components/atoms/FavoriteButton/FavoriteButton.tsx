@@ -1,12 +1,7 @@
 import { FaHeart } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
 import React from "react";
-
-interface FavoriteButtonProps {
-    isFavorite: boolean;
-    onToggle: () => void;
-    isCardSelected?: boolean;
-}
+import type { FavoriteButtonProps } from "./models/favoriteButton.model";
 
 const FavoriteButton: React.FC<FavoriteButtonProps> = ({ isFavorite, onToggle, isCardSelected = false }) => {
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {

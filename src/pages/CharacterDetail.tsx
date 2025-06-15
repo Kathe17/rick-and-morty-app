@@ -4,7 +4,7 @@ import { IoArrowBackOutline } from 'react-icons/io5';
 import { useFavorites } from '../hooks/useFavorites';
 import { useQuery } from '@apollo/client';
 import { GET_CHARACTER_BY_ID } from '../graphql/queries';
-import CharacterInfo from '../components/organisms/CharacterInfo';
+import CharacterInfo from '../components/organisms/CharacterInfo/CharacterInfo';
 
 const CharacterDetail: React.FC = () => {
 

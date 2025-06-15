@@ -1,24 +1,9 @@
 import React from "react";
-import FavoriteButton from "../atoms/FavoriteButton";
-import Typography from "../atoms/Typography";
+import FavoriteButton from "../../atoms/FavoriteButton/FavoriteButton";
+import Typography from "../../atoms/Typography/Typography";
 import { useNavigate } from "react-router-dom";
 import { LiaTrashAlt, LiaTrashRestoreAltSolid } from "react-icons/lia";
-
-interface CharacterCardProps {
-  char: {
-    id: string;
-    name: string;
-    image: string;
-    species: string;
-  };
-  selectedId?: string | null;
-  setSelectedId: (id: string) => void;
-  favorites: string[];
-  toggleFavorite: (id: string) => void;
-  onSoftDelete?: (id: string) => void;
-  onRestore?: (id: string) => void;
-  isDeleted?: boolean;
-}
+import type { CharacterCardProps } from "./models/characterCard.model";
 
 const CharacterCard: React.FC<CharacterCardProps> = ({
   char,
@@ -56,7 +41,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
           alt={char.name}
           className="w-10 h-10 rounded-full border-2 border-primary-600"
         />
-        <div className="flex flex-col items-start">
+        <div className="flex flex-col items-start text-start">
           <Typography
             variant="p"
             size="base"

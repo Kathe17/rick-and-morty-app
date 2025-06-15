@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import CharacterSection from '../components/organisms/CharacterSection';
+import CharacterSection from '../components/organisms/CharacterSection/CharacterSection';
 import { MemoryRouter } from 'react-router-dom';
 
 describe('CharacterSection', () => {

@@ -1,20 +1,7 @@
 import React from "react";
 import clsx from "clsx";
-import Typography, { type TypographyProps } from "./Typography";
-
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    variant?: "primary" | "secondary";
-    text?: string;
-    textProps?: TypographyProps
-    width?: string;
-    height?: string;
-    aspect?: string;
-    rounded?: string;
-    padding?: string;
-    selected?: boolean;
-    children?: React.ReactNode;
-    ref?: React.RefObject<HTMLButtonElement | null>;
-}
+import Typography from "../Typography/Typography";
+import type { ButtonProps } from "./models/button.model";
 
 const Button: React.FC<ButtonProps> = ({
     variant = 'primary',

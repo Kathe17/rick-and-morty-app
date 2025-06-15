@@ -1,14 +1,10 @@
 
 import React, { useEffect, useRef, useState } from "react";
-import Typography from "../atoms/Typography";
+import Typography from "../../atoms/Typography/Typography";
 import { FaHeart } from "react-icons/fa";
-import CharacterInfoItem from "../molecules/CharacterInfoItem";
-import Button from "../atoms/Button";
-
-interface CharacterInfoProps {
-    char: any;
-    isFavorite: boolean;
-}
+import CharacterInfoItem from "../../molecules/CharacterInfoItem";
+import Button from "../../atoms/Button/Button";
+import type { CharacterInfoProps } from "./models/characterInfo.model";
 
 const CharacterInfo: React.FC<CharacterInfoProps> = ({
     char,
@@ -83,9 +79,9 @@ const CharacterInfo: React.FC<CharacterInfoProps> = ({
             </div>
             <div className="w-full">
                 <div className="flex flex-col w-full">
-                    <CharacterInfoItem label="Specie" value={char.species} />
-                    <CharacterInfoItem label="Status" value={char.status} />
-                    <CharacterInfoItem label="Gender" value={char.gender} />
+                    <CharacterInfoItem label="Specie" value={char.species ?? "Unknown"} />
+                    <CharacterInfoItem label="Status" value={char.status ?? "Unknown"} />
+                    <CharacterInfoItem label="Gender" value={char.gender ?? "Unknown"} />
                 </div>
             </div>
             {/* Comentarios */}

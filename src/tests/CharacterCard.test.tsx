@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import CharacterCard from '../components/molecules/CharacterCard';
+import CharacterCard from '../components/molecules/CharacterCard/CharacterCard';
 import { MemoryRouter } from 'react-router-dom';
 
 describe('CharacterCard', () => {
