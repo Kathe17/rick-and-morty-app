@@ -1,0 +1,17 @@
+@import url('./assets/fonts/greycliff-cf/stylesheet.css');
+@import "tailwindcss";
+
+@theme {
+  --color-primary-100: #EEE3FF;
+  --color-primary-600: #8054C7;
+  --color-primary-700: #5A3696;
+  --color-secondary-600: #63D838;
+  --color-cool-gray-100: #F3F4F6;
+  --color-cool-gray-300: #D1D5DB;
+  --color-cool-gray-500: #6B7280;
+  --color-cool-white-100: #FEFEFE;
+}
+
+body {
+  font-family: 'Greycliff CF', ui-sans-serif, system-ui, sans-serif;
+}
