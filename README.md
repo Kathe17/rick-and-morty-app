@@ -89,7 +89,32 @@ query ($name: String, $species: String, $status: String, $gender: String) {
 - `src/graphql/` — Consultas GraphQL
 - `src/assets/` — Imágenes y recursos
 
-## Notas adicionales
+-## Modelos y Tipos: Organización y Buenas Prácticas
+
+Para mantener un código limpio, escalable y fácil de mantener, este proyecto separa los **modelos** y **tipos** TypeScript en dos niveles:
+
+- **Modelos globales (`src/models/`)**: Aquí se definen los modelos y tipos reutilizables en toda la aplicación, como `Character`, `Option` o props genéricas. Ejemplo:
+  - `character.model.ts`: Define la interfaz principal de un personaje (`Character`).
+  - `option.model.ts`: Define el tipo base para opciones de filtros y selects.
+  - `favoriteButton.ts`: Props para el botón de favoritos reutilizable.
+
+- **Modelos locales de componente**: Cada componente complejo (especialmente moléculas y organismos) puede tener su propia carpeta `models/` donde se definen los tipos y props específicos de ese componente. Esto permite:
+  - Mejor encapsulamiento y claridad sobre qué props espera cada componente.
+  - Importar modelos globales cuando sea necesario (por ejemplo, `Character` en tarjetas o listas).
+  - Ejemplo de estructura:
+    - `src/components/molecules/CharacterCard/models/characterCard.model.ts`: Props para la tarjeta de personaje.
+    - `src/components/organisms/Sidebar/models/sidebar.model.ts`: Props para la barra lateral.
+    - `src/components/molecules/FilterSection/models/filterSection.model.ts`: Props para la sección de filtros.
+    - `src/components/atoms/Poppup/models/poppup.model.ts`: Props para el componente de popup.
+
+**Recomendaciones:**
+- Siempre reutiliza modelos globales cuando un tipo es compartido entre varios componentes.
+- Define modelos locales solo cuando el tipo es exclusivo de un componente.
+- Usa `import type` para importar solo los tipos y evitar incluir código innecesario en el bundle.
+
+Esta organización mejora la escalabilidad, la legibilidad y el mantenimiento del código, facilitando la colaboración y la extensión de la app.
+
+---
 - El estado de favoritos, eliminados y comentarios se guarda en `localStorage`.
 - El diseño es responsivo y accesible.
 - Puedes personalizar la paleta de colores en `tailwind.config.js` y las fuentes en `index.css`.
